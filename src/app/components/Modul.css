@@ -1,0 +1,77 @@
+.modul {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+  padding: 28px 0;
+}
+.modul + .modul {
+  border-top: 2px solid var(--aksen);
+}
+.modul.balik .modul-teks {
+  order: 2;
+}
+.modul-no {
+  display: block;
+  font:
+    800 56px var(--font-judul),
+    sans-serif;
+  color: var(--utama);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.04em;
+}
+.modul h3 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  margin: 8px 0 10px;
+}
+.modul-desk {
+  color: var(--abu);
+  font-size: 18px;
+  max-width: 30em;
+}
+.subfitur {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--aksen);
+  border: 2px solid var(--aksen);
+  margin-top: 20px;
+}
+.subfitur div {
+  background: #fff;
+  padding: 13px 15px;
+}
+.subfitur h4 {
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+}
+.subfitur p {
+  font-size: 14.5px;
+  color: var(--abu);
+  line-height: 1.45;
+}
+.modul-ponsel {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+}
+.modul-ponsel .phone {
+  box-shadow: none;
+}
+@media (max-width: 900px) {
+  .modul {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 22px 0;
+  }
+  .modul.balik .modul-teks {
+    order: 0;
+  }
+}
+@media (max-width: 520px) {
+  .subfitur {
+    grid-template-columns: 1fr;
+  }
+}

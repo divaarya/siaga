@@ -1,0 +1,350 @@
+.d-sapa {
+  display: grid;
+  gap: 2px;
+}
+.d-sapa small {
+  color: var(--abu);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.d-sapa b {
+  font:
+    800 18px/1.2 var(--font-judul),
+    sans-serif;
+}
+.d-jam {
+  font:
+    800 42px var(--font-judul),
+    sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.d-jam span {
+  font-size: 15px;
+  color: var(--abu);
+  letter-spacing: 0;
+}
+.d-kartu {
+  background: var(--muda);
+  padding: 12px 14px;
+  display: grid;
+  gap: 5px;
+  border-left: 4px solid var(--utama);
+}
+.d-kartu b {
+  font:
+    800 16px var(--font-judul),
+    sans-serif;
+}
+.d-kartu small {
+  color: var(--abu);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.chip {
+  justify-self: start;
+  font:
+    700 12px var(--font-judul),
+    sans-serif;
+  padding: 4px 9px;
+  background: #e4e4e0;
+  color: var(--aksen);
+  white-space: nowrap;
+}
+.chip.ok {
+  background: #d3f0e0;
+  color: #07643a;
+}
+.chip.bad {
+  background: #ffd9de;
+  color: #b00020;
+}
+.d-hasil {
+  padding: 11px 13px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  border-left: 4px solid;
+}
+.d-hasil.ok {
+  background: #d3f0e0;
+  color: #07643a;
+  border-color: #0b8a4b;
+}
+.d-hasil.bad {
+  background: #ffd9de;
+  color: #b00020;
+  border-color: #e4002b;
+}
+.d-tombol {
+  margin-top: auto;
+  border: 2px solid var(--aksen);
+  background: var(--aksen);
+  color: #fff;
+  padding: 14px;
+  font:
+    800 15.5px var(--font-judul),
+    sans-serif;
+  cursor: pointer;
+}
+.d-tombol.merah {
+  background: var(--utama);
+  border-color: var(--utama);
+}
+.d-tombol:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.catatan {
+  color: var(--abu);
+  font-size: 12.5px;
+}
+.saklar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: var(--muda);
+  padding: 10px 13px;
+  font:
+    700 14px var(--font-judul),
+    sans-serif;
+  color: var(--aksen);
+  cursor: pointer;
+  text-align: left;
+}
+.saklar i {
+  width: 38px;
+  height: 22px;
+  background: #bdbdb7;
+  position: relative;
+  flex: none;
+  transition: 0.2s;
+}
+.saklar i::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  transition: 0.2s;
+}
+.saklar[aria-checked="true"] i {
+  background: var(--utama);
+}
+.saklar[aria-checked="true"] i::after {
+  left: 19px;
+}
+.radar {
+  position: relative;
+  height: 130px;
+  background: var(--muda);
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--garis) 1px, transparent 1px),
+    linear-gradient(90deg, var(--garis) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.radar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  border-radius: 50%;
+  border: 2px dashed var(--aksen);
+  opacity: 0.4;
+}
+.sekolah {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font:
+    800 11px var(--font-judul),
+    sans-serif;
+  background: var(--aksen);
+  color: #fff;
+  padding: 3px 8px;
+}
+.pin {
+  position: absolute;
+  left: 58%;
+  top: 68%;
+  width: 13px;
+  height: 13px;
+  background: var(--ok);
+  box-shadow: 0 0 0 5px rgba(11, 138, 75, 0.25);
+  transition: 0.5s;
+}
+.pin.jauh {
+  left: 88%;
+  top: 16%;
+  background: var(--utama);
+  box-shadow: 0 0 0 5px rgba(228, 0, 43, 0.25);
+}
+.pilih {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pilih button {
+  border: 2px solid var(--aksen);
+  background: #fff;
+  padding: 7px 13px;
+  font:
+    700 13.5px var(--font-judul),
+    sans-serif;
+  color: var(--aksen);
+  cursor: pointer;
+}
+.pilih button[aria-pressed="true"] {
+  background: var(--aksen);
+  color: #fff;
+}
+.pilih button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.alur {
+  list-style: none;
+  margin: 2px 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.alur li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #9a9a94;
+}
+.alur li::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #e4e4e0;
+  flex: none;
+  transition: 0.3s;
+}
+.alur li.on {
+  color: var(--aksen);
+}
+.alur li.on::before {
+  background: var(--ok);
+}
+.geser-label {
+  display: grid;
+  gap: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.geser {
+  width: 100%;
+  accent-color: var(--utama);
+}
+.slip {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+}
+.slip div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.slip span {
+  color: var(--abu);
+}
+.slip .total {
+  background: var(--aksen);
+  color: #fff;
+  padding: 12px 14px;
+  margin-top: 3px;
+  align-items: center;
+}
+.slip .total span {
+  color: #cfcfca;
+}
+.slip .total b {
+  font:
+    800 20px var(--font-judul),
+    sans-serif;
+}
+.prog {
+  height: 8px;
+  background: #e4e4e0;
+}
+.prog i {
+  display: block;
+  height: 100%;
+  background: var(--utama);
+  transition: width 0.3s;
+}
+.daftar-cek {
+  display: grid;
+  gap: 6px;
+}
+.cek {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: var(--muda);
+  padding: 10px 12px;
+  font:
+    600 14px var(--font-body),
+    sans-serif;
+  color: var(--aksen);
+  cursor: pointer;
+  text-align: left;
+}
+.cek i {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--aksen);
+  flex: none;
+  background: #fff;
+}
+.cek.on i {
+  background: var(--ok);
+  border-color: var(--ok);
+  box-shadow: inset 0 0 0 3px #fff;
+}
+.cek:disabled {
+  cursor: default;
+}
+.daftar-dok {
+  display: grid;
+  gap: 6px;
+}
+.dok {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: var(--muda);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: opacity 0.2s;
+}
+.dok small {
+  display: block;
+  color: var(--abu);
+  font-weight: 500;
+}
+.dok.mati {
+  opacity: 0.38;
+}

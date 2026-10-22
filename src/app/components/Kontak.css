@@ -1,0 +1,37 @@
+.kontak {
+  background: var(--utama);
+  color: #fff;
+  padding: 48px 0;
+  border-top: 2px solid var(--aksen);
+}
+.kontak-isi {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+.kontak h2 {
+  font-size: clamp(32px, 4.6vw, 58px);
+}
+.kontak p {
+  font-size: 18px;
+}
+.kontak-aksi {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0 12px;
+}
+.kontak small {
+  display: block;
+  color: #ffe0e5;
+}
+@media (max-width: 860px) {
+  .kontak {
+    padding: 36px 0;
+  }
+  .kontak-isi {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

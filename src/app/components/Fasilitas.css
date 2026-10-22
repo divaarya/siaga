@@ -1,0 +1,53 @@
+.fas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--aksen);
+  border: 2px solid var(--aksen);
+}
+.fas-sel {
+  background: #fff;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 270px;
+}
+.fas-no {
+  font:
+    800 15px var(--font-judul),
+    sans-serif;
+  color: var(--utama);
+}
+.fas-sel h3 {
+  font-size: 25px;
+}
+.fas-sel p {
+  color: var(--abu);
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.fas-sel em {
+  margin-top: auto;
+  font:
+    700 12.5px var(--font-judul),
+    sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-top: 2px solid var(--aksen);
+  padding-top: 10px;
+}
+@media (max-width: 1000px) {
+  .fas-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .fas-grid {
+    grid-template-columns: 1fr;
+  }
+  .fas-sel {
+    min-height: 0;
+  }
+}

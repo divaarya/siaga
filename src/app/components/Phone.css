@@ -1,0 +1,38 @@
+.phone {
+  width: 300px;
+  max-width: 100%;
+  background: #0d0d0d;
+  border-radius: 22px;
+  padding: 8px;
+  margin: 0 auto;
+  box-shadow: 8px 8px 0 rgba(13, 13, 13, 0.25);
+}
+.layar {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 18px 8px;
+  font:
+    800 12.5px var(--font-judul),
+    sans-serif;
+  border-bottom: 2px solid #0d0d0d;
+}
+.status span:last-child {
+  color: var(--abu);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.layar-isi {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+}

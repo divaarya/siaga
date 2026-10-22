@@ -1,69 +1,39 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { getSite } from "@/lib/getSite";
+import { buatLinkWa } from "@/lib/whatsapp";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Bukti from "./components/Bukti";
+import Fasilitas from "./components/Fasilitas";
+import Perbandingan from "./components/Perbandingan";
+import Modul from "./components/Modul";
+import CaraKerja from "./components/CaraKerja";
+import Testimoni from "./components/Testimoni";
+import Harga from "./components/Harga";
+import Faq from "./components/Faq";
+import Kontak from "./components/Kontak";
+import Footer from "./components/Footer";
+import WhatsApp from "./components/WhatsApp";
 
-export default function Home() {
+export default async function Home() {
+  const site = await getSite();
+  const wa = buatLinkWa(site.whatsappNomor, site.whatsappPesan);
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar nama={site.nama} wa={wa} />
+      <main>
+        <Hero site={site} wa={wa} />
+        <Bukti />
+        <Fasilitas />
+        <Perbandingan />
+        <Modul />
+        <CaraKerja />
+        <Testimoni />
+        <Harga wa={wa} />
+        <Faq wa={wa} />
+        <Kontak site={site} wa={wa} />
       </main>
-    </div>
+      <Footer site={site} wa={wa} />
+      <WhatsApp wa={wa} />
+    </>
   );
 }

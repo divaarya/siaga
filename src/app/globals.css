@@ -1,49 +1,202 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --utama: #e4002b;
+  --aksen: #0d0d0d;
+  --muda: #f1f1ee;
+  --garis: #d4d4cf;
+  --abu: #5f5f5a;
+  --ok: #0b8a4b;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+body {
+  margin: 0;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--aksen);
+  background: #fff;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-judul), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+p {
   margin: 0;
 }
-
 a {
   color: inherit;
-  text-decoration: none;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.seksi {
+  padding: 48px 0 56px;
+  border-top: 2px solid var(--aksen);
+}
+.kepala {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 48px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+.kepala .label {
+  grid-column: 1 / -1;
+}
+.kepala h2 {
+  font-size: clamp(30px, 4vw, 48px);
+}
+.kepala p {
+  color: var(--abu);
+  font-size: 18px;
+  max-width: 34em;
+}
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font:
+    700 13px var(--font-judul),
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--utama);
+}
+.label::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--utama);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: 2px solid var(--aksen);
+  background: var(--aksen);
+  color: #fff;
+  font:
+    700 16px var(--font-judul),
+    sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+.btn:hover {
+  background: var(--utama);
+  border-color: var(--utama);
+}
+.btn.merah {
+  background: var(--utama);
+  border-color: var(--utama);
+}
+.btn.merah:hover {
+  background: var(--aksen);
+  border-color: var(--aksen);
+}
+.btn.garis {
+  background: #fff;
+  color: var(--aksen);
+}
+.btn.garis:hover {
+  background: var(--aksen);
+  color: #fff;
+}
+.btn.putih {
+  background: #fff;
+  color: var(--aksen);
+  border-color: #fff;
+}
+.btn.putih:hover {
+  background: var(--aksen);
+  color: #fff;
+  border-color: var(--aksen);
+}
+.btn.kecil {
+  padding: 9px 16px;
+  font-size: 14.5px;
+}
+.logo-tanda {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: var(--utama);
+  flex: none;
+}
+.logo-tanda::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 6px;
+  margin-left: -3px;
+  background: #fff;
+}
+.logo-tanda::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 6px;
+  height: 6px;
+  margin-top: -3px;
+  background: #fff;
+}
+.w1 {
+  background: var(--utama);
+}
+.w2 {
+  background: #ececea;
+}
+.w3 {
+  background: #d9d9d4;
+}
+.w4 {
+  background: #ececea;
+}
+.w5 {
+  background: var(--utama);
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--utama);
+  outline-offset: 2px;
+}
+@media (max-width: 860px) {
+  .seksi {
+    padding: 36px 0 44px;
+  }
+  .kepala {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

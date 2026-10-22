@@ -1,0 +1,94 @@
+.harga-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--aksen);
+  border: 2px solid var(--aksen);
+}
+.harga-sel {
+  position: relative;
+  background: #fff;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.harga-sel.populer {
+  background: var(--utama);
+  color: #fff;
+}
+.harga-lencana {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--aksen);
+  color: #fff;
+  font:
+    700 12px var(--font-judul),
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+}
+.harga-sel h3 {
+  font-size: 30px;
+}
+.harga-sel small {
+  color: var(--abu);
+}
+.populer small,
+.populer .harga-teks,
+.populer .harga-angka span {
+  color: #ffe0e5;
+}
+.harga-angka {
+  font:
+    800 36px var(--font-judul),
+    sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.harga-angka span {
+  font:
+    500 14px var(--font-body),
+    sans-serif;
+  color: var(--abu);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+.harga-teks {
+  color: var(--abu);
+  font-size: 15.5px;
+}
+.harga-sel ul {
+  list-style: none;
+  margin: 6px 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+  flex: 1;
+  border-top: 2px solid currentColor;
+  padding-top: 14px;
+}
+.harga-sel li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 500;
+}
+.harga-sel li svg {
+  flex: none;
+  margin-top: 4px;
+  color: var(--utama);
+}
+.populer li svg {
+  color: #fff;
+}
+.harga-sel .btn {
+  justify-content: center;
+}
+@media (max-width: 860px) {
+  .harga-grid {
+    grid-template-columns: 1fr;
+  }
+}

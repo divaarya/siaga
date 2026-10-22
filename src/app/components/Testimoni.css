@@ -1,0 +1,56 @@
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--aksen);
+  border: 2px solid var(--aksen);
+}
+.testi-sel {
+  margin: 0;
+  background: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+}
+.testi-sel blockquote {
+  margin: 0;
+  font:
+    700 19px/1.4 var(--font-judul),
+    sans-serif;
+  letter-spacing: -0.015em;
+}
+.testi-sel figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 2px solid var(--aksen);
+  padding-top: 14px;
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--utama);
+  color: #fff;
+  font:
+    800 16px var(--font-judul),
+    sans-serif;
+  flex: none;
+}
+.testi-sel b,
+.testi-sel small {
+  display: block;
+}
+.testi-sel small {
+  color: var(--abu);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+@media (max-width: 860px) {
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
+}
