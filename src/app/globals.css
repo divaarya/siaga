@@ -1,25 +1,68 @@
 :root {
   --utama: #e4002b;
-  --aksen: #0d0d0d;
-  --muda: #f1f1ee;
-  --garis: #d4d4cf;
-  --abu: #5f5f5a;
+  --aksen: #0b1030;
+  --bg: #dff1ff;
+  --teks: #0b1a2b;
+  --redup: #4c6075;
+  --kartu: #ffffff;
+  --kartu2: #eef6fc;
+  --garis: #cfe0ee;
+  --glow: rgba(255, 255, 255, 0.7);
   --ok: #0b8a4b;
+  --wait: #b27300;
+  --bad: #d3202f;
+}
+html[data-fase="fajar"] {
+  --bg: #ffdccb;
+  --teks: #34162b;
+  --redup: #7a5568;
+  --kartu: #ffffff;
+  --kartu2: #fff1ea;
+  --garis: #f2c6b5;
+}
+html[data-fase="senja"] {
+  --bg: #ffc9a0;
+  --teks: #3a1428;
+  --redup: #7d4b50;
+  --kartu: #fff7f0;
+  --kartu2: #ffe6d2;
+  --garis: #f0b690;
+}
+html[data-fase="malam"] {
+  --bg: #0c1233;
+  --teks: #eaf0ff;
+  --redup: #9aa7d6;
+  --kartu: #141b45;
+  --kartu2: #1b2458;
+  --garis: #2a3578;
+  --glow: rgba(80, 100, 255, 0.28);
+  --ok: #4be08f;
+  --wait: #ffc24a;
+  --bad: #ff7a85;
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 76px;
+  scroll-padding-top: 70px;
+  background-color: var(--bg);
+  transition: background-color 0.6s;
 }
 body {
   margin: 0;
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 16.5px;
-  line-height: 1.6;
-  color: var(--aksen);
-  background: #fff;
+  line-height: 1.55;
+  color: var(--teks);
+  background-image: radial-gradient(
+    900px 420px at 88% -8%,
+    var(--glow),
+    transparent 65%
+  );
+  background-repeat: no-repeat;
+  transition: color 0.6s;
 }
 h1,
 h2,
@@ -27,9 +70,9 @@ h3,
 h4 {
   margin: 0;
   font-family: var(--font-judul), system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 p {
   margin: 0;
@@ -38,143 +81,91 @@ a {
   color: inherit;
 }
 .wrap {
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 .seksi {
-  padding: 48px 0 56px;
-  border-top: 2px solid var(--aksen);
+  padding: 36px 0 44px;
 }
 .kepala {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px 48px;
+  gap: 8px 40px;
   align-items: end;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 .kepala .label {
   grid-column: 1 / -1;
 }
 .kepala h2 {
-  font-size: clamp(30px, 4vw, 48px);
+  font-size: clamp(28px, 3.8vw, 44px);
 }
 .kepala p {
-  color: var(--abu);
-  font-size: 18px;
+  color: var(--redup);
+  font-size: 17.5px;
   max-width: 34em;
 }
 .label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  justify-self: start;
   font:
-    700 13px var(--font-judul),
+    700 12.5px var(--font-body),
     sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--utama);
+  padding: 6px 12px;
+  border-radius: 99px;
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  transition: background-color 0.6s;
 }
 .label::before {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--utama);
 }
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 24px;
-  border: 2px solid var(--aksen);
-  background: var(--aksen);
-  color: #fff;
+  padding: 12px 20px;
+  border-radius: 99px;
+  border: 2px solid var(--teks);
+  background: transparent;
+  color: var(--teks);
   font:
-    700 16px var(--font-judul),
+    700 15.5px var(--font-body),
     sans-serif;
   text-decoration: none;
   cursor: pointer;
   transition:
-    background 0.15s,
-    color 0.15s,
-    border-color 0.15s;
+    transform 0.15s,
+    background-color 0.15s;
 }
 .btn:hover {
+  transform: translateY(-2px);
+}
+.btn.utama {
   background: var(--utama);
   border-color: var(--utama);
-}
-.btn.merah {
-  background: var(--utama);
-  border-color: var(--utama);
-}
-.btn.merah:hover {
-  background: var(--aksen);
-  border-color: var(--aksen);
-}
-.btn.garis {
-  background: #fff;
-  color: var(--aksen);
-}
-.btn.garis:hover {
-  background: var(--aksen);
   color: #fff;
-}
-.btn.putih {
-  background: #fff;
-  color: var(--aksen);
-  border-color: #fff;
-}
-.btn.putih:hover {
-  background: var(--aksen);
-  color: #fff;
-  border-color: var(--aksen);
 }
 .btn.kecil {
-  padding: 9px 16px;
+  padding: 8px 16px;
   font-size: 14.5px;
 }
-.logo-tanda {
-  position: relative;
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  background: var(--utama);
-  flex: none;
-}
-.logo-tanda::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 6px;
-  bottom: 6px;
-  width: 6px;
-  margin-left: -3px;
-  background: #fff;
-}
-.logo-tanda::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 6px;
-  right: 6px;
-  height: 6px;
-  margin-top: -3px;
-  background: #fff;
-}
-.w1 {
-  background: var(--utama);
-}
-.w2 {
-  background: #ececea;
-}
-.w3 {
-  background: #d9d9d4;
-}
-.w4 {
-  background: #ececea;
-}
-.w5 {
-  background: var(--utama);
+.kartu {
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: 22px;
+  transition:
+    background-color 0.6s,
+    border-color 0.6s;
 }
 a:focus-visible,
 button:focus-visible,
@@ -185,12 +176,12 @@ summary:focus-visible {
 }
 @media (max-width: 860px) {
   .seksi {
-    padding: 36px 0 44px;
+    padding: 28px 0 34px;
   }
   .kepala {
     grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 22px;
+    gap: 8px;
+    margin-bottom: 18px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

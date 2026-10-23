@@ -1,9 +1,9 @@
-import { Archivo, Inter_Tight } from "next/font/google";
+import { Syne, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { getSite } from "@/lib/getSite";
 
-const judul = Archivo({ subsets: ["latin"], variable: "--font-judul" });
-const body = Inter_Tight({ subsets: ["latin"], variable: "--font-body" });
+const judul = Syne({ subsets: ["latin"], variable: "--font-judul" });
+const body = Instrument_Sans({ subsets: ["latin"], variable: "--font-body" });
 
 export async function generateMetadata() {
   const site = await getSite();
@@ -33,6 +33,8 @@ export default async function RootLayout({ children }) {
   return (
     <html
       lang="id"
+      data-fase="fajar"
+      suppressHydrationWarning
       className={`${judul.variable} ${body.variable}`}
       style={{ "--utama": site.warnaUtama, "--aksen": site.warnaAksen }}
     >

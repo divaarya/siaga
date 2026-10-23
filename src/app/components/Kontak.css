@@ -1,37 +1,58 @@
-.kontak {
-  background: var(--utama);
-  color: #fff;
-  padding: 48px 0;
-  border-top: 2px solid var(--aksen);
-}
-.kontak-isi {
+.kt {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  align-items: end;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 28px;
 }
-.kontak h2 {
-  font-size: clamp(32px, 4.6vw, 58px);
+.kt h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  margin: 10px 0;
+  max-width: 16em;
 }
-.kontak p {
-  font-size: 18px;
+.kt p {
+  color: var(--redup);
+  font-size: 17px;
+  max-width: 36em;
+  margin-bottom: 16px;
 }
-.kontak-aksi {
-  display: flex;
+.kt ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
   gap: 10px;
-  flex-wrap: wrap;
-  margin: 20px 0 12px;
 }
-.kontak small {
+.kt li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--kartu2);
+  transition: background-color 0.6s;
+}
+.kt li svg {
+  color: var(--utama);
+  flex: none;
+}
+.kt small {
   display: block;
-  color: #ffe0e5;
+  color: var(--redup);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.kt li a,
+.kt li span {
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-word;
 }
 @media (max-width: 860px) {
-  .kontak {
-    padding: 36px 0;
-  }
-  .kontak-isi {
+  .kt {
     grid-template-columns: 1fr;
-    gap: 20px;
+    padding: 20px;
   }
 }

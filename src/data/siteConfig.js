@@ -2,7 +2,7 @@
 export const siteConfig = {
   nama: "Siaga",
   warnaUtama: "#e4002b",
-  warnaAksen: "#0d0d0d",
+  warnaAksen: "#0b1030",
   heroJudul: "Jadwal jaga rapi. Absen jujur. Gaji tepat.",
   heroDeskripsi:
     "Siaga menyatukan absensi jaga, gaji per shift, uji kompetensi, SPO, dan perizinan tenaga kesehatan dalam satu aplikasi untuk klinik dan rumah sakit.",

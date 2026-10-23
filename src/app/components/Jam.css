@@ -1,0 +1,366 @@
+.stage {
+  padding: 22px 0 32px;
+}
+.atas {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 10px 40px;
+  align-items: end;
+}
+.atas .label {
+  grid-column: 1 / -1;
+}
+.atas h1 {
+  font-size: clamp(26px, 3.5vw, 42px);
+}
+.atas h1 span {
+  display: block;
+}
+.atas h1 .merah {
+  color: var(--utama);
+}
+.kanan {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+.kanan p {
+  color: var(--redup);
+  font-size: 17px;
+  max-width: 32em;
+}
+.aksi {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.jam-besar {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px 22px;
+  flex-wrap: wrap;
+  margin: 14px 0 4px;
+}
+.jam-besar b {
+  font:
+    800 clamp(84px, 17vw, 208px) / 0.82 var(--font-judul),
+    sans-serif;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.fase {
+  display: grid;
+  padding-bottom: 8px;
+}
+.fase strong {
+  font:
+    700 clamp(18px, 2.3vw, 26px) var(--font-judul),
+    sans-serif;
+}
+.fase span {
+  color: var(--redup);
+}
+.pena {
+  position: relative;
+  height: 50px;
+  margin-top: 6px;
+}
+.tanda {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--garis);
+  background: var(--kartu);
+  color: var(--teks);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    background-color 0.2s;
+}
+.tanda::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 10px;
+  margin-left: -1px;
+  background: var(--garis);
+}
+.tanda:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+.tanda.on {
+  background: var(--utama);
+  border-color: var(--utama);
+  color: #fff;
+}
+.geser {
+  --trek: linear-gradient(
+    90deg,
+    #23286b 0 29.17%,
+    #ffcf5c 29.17% 58.33%,
+    #ff8a5c 58.33% 87.5%,
+    #23286b 87.5% 100%
+  );
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.geser::-webkit-slider-runnable-track {
+  height: 14px;
+  border-radius: 99px;
+  background: var(--trek);
+}
+.geser::-moz-range-track {
+  height: 14px;
+  border-radius: 99px;
+  background: var(--trek);
+}
+.geser::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--utama);
+  border: 4px solid #fff;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+.geser::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--utama);
+  border: 4px solid #fff;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+.skala {
+  position: relative;
+  height: 20px;
+  margin-top: -6px;
+}
+.skala span {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--redup);
+  font-variant-numeric: tabular-nums;
+}
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  font-size: 13px;
+  color: var(--redup);
+}
+.legenda i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.legenda .pg {
+  background: #ffcf5c;
+}
+.legenda .sg {
+  background: #ff8a5c;
+}
+.legenda .ml {
+  background: #23286b;
+}
+.legenda small {
+  margin-left: auto;
+  font-size: 13px;
+}
+.stage-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  align-items: start;
+}
+.kj {
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+.kj-kepala {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+.kj-jam {
+  background: var(--utama);
+  color: #fff;
+  font:
+    800 18px var(--font-judul),
+    sans-serif;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.kj-kepala small {
+  color: var(--redup);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.kj-kepala h2 {
+  font-size: 21px;
+}
+.kj-kepala > svg {
+  color: var(--utama);
+}
+.kj-desk {
+  color: var(--redup);
+  font-size: 15.5px;
+}
+.kj-fitur {
+  list-style: none;
+  margin: 0;
+  padding: 12px 0 0;
+  border-top: 1px dashed var(--garis);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.kj-fitur li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--kartu2);
+  padding: 5px 11px;
+  border-radius: 99px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.kj-fitur svg {
+  color: var(--utama);
+}
+.samping {
+  display: grid;
+  gap: 12px;
+}
+.sp {
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+.sp h3 {
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.sp h3 em {
+  font:
+    700 12px var(--font-body),
+    sans-serif;
+  font-style: normal;
+  color: var(--utama);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.unit {
+  display: grid;
+  grid-template-columns: 84px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-top: 1px solid var(--garis);
+  font-size: 14.5px;
+}
+.unit b {
+  font-weight: 700;
+}
+.unit small,
+.unit em {
+  color: var(--redup);
+  font-style: normal;
+  font-size: 13px;
+}
+.avatars {
+  display: flex;
+}
+.avatars span {
+  width: 28px;
+  height: 28px;
+  margin-right: -7px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--utama);
+  color: #fff;
+  border: 2px solid var(--kartu);
+  font:
+    800 12px var(--font-body),
+    sans-serif;
+}
+.avatars span:nth-child(2n) {
+  background: var(--teks);
+  color: var(--bg);
+}
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.log button {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: none;
+  color: var(--redup);
+  padding: 6px 8px;
+  border-radius: 10px;
+  font:
+    500 14px var(--font-body),
+    sans-serif;
+  cursor: pointer;
+}
+.log button:hover {
+  background: var(--kartu2);
+}
+.log span {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  min-width: 42px;
+}
+.log .lalu button {
+  color: var(--teks);
+}
+.log .lalu span {
+  color: var(--utama);
+}
+@media (max-width: 900px) {
+  .atas,
+  .stage-grid {
+    grid-template-columns: 1fr;
+  }
+  .atas {
+    gap: 10px;
+  }
+  .legenda small {
+    margin-left: 0;
+    width: 100%;
+  }
+}

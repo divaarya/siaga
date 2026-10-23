@@ -1,350 +1,339 @@
-.d-sapa {
+.d {
   display: grid;
-  gap: 2px;
-}
-.d-sapa small {
-  color: var(--abu);
-  font-size: 12.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-.d-sapa b {
-  font:
-    800 18px/1.2 var(--font-judul),
-    sans-serif;
-}
-.d-jam {
-  font:
-    800 42px var(--font-judul),
-    sans-serif;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.d-jam span {
-  font-size: 15px;
-  color: var(--abu);
-  letter-spacing: 0;
-}
-.d-kartu {
-  background: var(--muda);
-  padding: 12px 14px;
-  display: grid;
-  gap: 5px;
-  border-left: 4px solid var(--utama);
-}
-.d-kartu b {
-  font:
-    800 16px var(--font-judul),
-    sans-serif;
-}
-.d-kartu small {
-  color: var(--abu);
-  font-size: 13px;
-  line-height: 1.4;
-}
-.chip {
-  justify-self: start;
-  font:
-    700 12px var(--font-judul),
-    sans-serif;
-  padding: 4px 9px;
-  background: #e4e4e0;
-  color: var(--aksen);
-  white-space: nowrap;
-}
-.chip.ok {
-  background: #d3f0e0;
-  color: #07643a;
-}
-.chip.bad {
-  background: #ffd9de;
-  color: #b00020;
-}
-.d-hasil {
-  padding: 11px 13px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.45;
-  border-left: 4px solid;
-}
-.d-hasil.ok {
-  background: #d3f0e0;
-  color: #07643a;
-  border-color: #0b8a4b;
-}
-.d-hasil.bad {
-  background: #ffd9de;
-  color: #b00020;
-  border-color: #e4002b;
-}
-.d-tombol {
-  margin-top: auto;
-  border: 2px solid var(--aksen);
-  background: var(--aksen);
-  color: #fff;
+  gap: 10px;
   padding: 14px;
+  background: var(--kartu2);
+  border-radius: 16px;
+  transition: background-color 0.6s;
+}
+.d-judul {
   font:
-    800 15.5px var(--font-judul),
+    700 15.5px var(--font-judul),
+    sans-serif;
+}
+.d-catatan {
+  color: var(--redup);
+  font-size: 12.5px;
+}
+.d-pil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.d-pil button {
+  border: 0;
+  background: var(--kartu);
+  color: var(--teks);
+  padding: 7px 13px;
+  border-radius: 99px;
+  font:
+    700 14px var(--font-body),
     sans-serif;
   cursor: pointer;
+  box-shadow: inset 0 0 0 1.5px var(--garis);
 }
-.d-tombol.merah {
+.d-pil button[aria-pressed="true"] {
   background: var(--utama);
-  border-color: var(--utama);
+  color: #fff;
+  box-shadow: none;
 }
-.d-tombol:disabled {
-  opacity: 0.4;
+.d-pil button:disabled {
   cursor: default;
+  opacity: 0.55;
 }
-.catatan {
-  color: var(--abu);
-  font-size: 12.5px;
-}
-.saklar {
+.d-saklar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   width: 100%;
   border: 0;
-  background: var(--muda);
-  padding: 10px 13px;
+  background: var(--kartu);
+  color: var(--teks);
+  padding: 10px 14px;
+  border-radius: 12px;
   font:
-    700 14px var(--font-judul),
+    700 14px var(--font-body),
     sans-serif;
-  color: var(--aksen);
   cursor: pointer;
   text-align: left;
 }
-.saklar i {
+.d-saklar i {
   width: 38px;
   height: 22px;
-  background: #bdbdb7;
+  border-radius: 99px;
+  background: var(--garis);
   position: relative;
   flex: none;
   transition: 0.2s;
 }
-.saklar i::after {
+.d-saklar i::after {
   content: "";
   position: absolute;
   top: 3px;
   left: 3px;
   width: 16px;
   height: 16px;
+  border-radius: 50%;
   background: #fff;
   transition: 0.2s;
 }
-.saklar[aria-checked="true"] i {
+.d-saklar[aria-checked="true"] i {
   background: var(--utama);
 }
-.saklar[aria-checked="true"] i::after {
+.d-saklar[aria-checked="true"] i::after {
   left: 19px;
 }
-.radar {
+.d-tombol {
+  border: 0;
+  border-radius: 99px;
+  background: var(--utama);
+  color: #fff;
+  padding: 12px;
+  font:
+    800 15px var(--font-body),
+    sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.d-tombol.gelap {
+  background: var(--teks);
+  color: var(--bg);
+}
+.d-tombol:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.d-tombol:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.d-hasil {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.d-hasil.ok {
+  background: color-mix(in srgb, var(--ok) 18%, transparent);
+  color: var(--ok);
+}
+.d-hasil.bad {
+  background: color-mix(in srgb, var(--bad) 18%, transparent);
+  color: var(--bad);
+}
+.d-chip {
+  justify-self: start;
+  font:
+    700 12px var(--font-body),
+    sans-serif;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--garis);
+  color: var(--teks);
+  white-space: nowrap;
+  font-style: normal;
+}
+.d-chip.ok {
+  background: color-mix(in srgb, var(--ok) 20%, transparent);
+  color: var(--ok);
+}
+.d-chip.bad {
+  background: color-mix(in srgb, var(--bad) 20%, transparent);
+  color: var(--bad);
+}
+.d-radar {
   position: relative;
-  height: 130px;
-  background: var(--muda);
+  height: 110px;
+  border-radius: 12px;
   overflow: hidden;
+  background-color: var(--kartu);
   background-image:
     linear-gradient(var(--garis) 1px, transparent 1px),
     linear-gradient(90deg, var(--garis) 1px, transparent 1px);
   background-size: 22px 22px;
 }
-.radar::before {
+.d-radar::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 96px;
-  height: 96px;
-  margin: -48px 0 0 -48px;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
   border-radius: 50%;
-  border: 2px dashed var(--aksen);
+  border: 2px dashed var(--teks);
   opacity: 0.4;
 }
-.sekolah {
+.d-unit {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   font:
-    800 11px var(--font-judul),
+    800 11px var(--font-body),
     sans-serif;
-  background: var(--aksen);
-  color: #fff;
-  padding: 3px 8px;
+  background: var(--teks);
+  color: var(--bg);
+  padding: 3px 9px;
+  border-radius: 99px;
 }
-.pin {
+.d-pin {
   position: absolute;
-  left: 58%;
+  left: 60%;
   top: 68%;
   width: 13px;
   height: 13px;
+  border-radius: 50%;
   background: var(--ok);
-  box-shadow: 0 0 0 5px rgba(11, 138, 75, 0.25);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--ok) 30%, transparent);
   transition: 0.5s;
 }
-.pin.jauh {
-  left: 88%;
+.d-pin.jauh {
+  left: 90%;
   top: 16%;
-  background: var(--utama);
-  box-shadow: 0 0 0 5px rgba(228, 0, 43, 0.25);
+  background: var(--bad);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--bad) 30%, transparent);
 }
-.pilih {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.pilih button {
-  border: 2px solid var(--aksen);
-  background: #fff;
-  padding: 7px 13px;
-  font:
-    700 13.5px var(--font-judul),
-    sans-serif;
-  color: var(--aksen);
-  cursor: pointer;
-}
-.pilih button[aria-pressed="true"] {
-  background: var(--aksen);
-  color: #fff;
-}
-.pilih button:disabled {
-  cursor: default;
-  opacity: 0.55;
-}
-.alur {
+.d-alur {
   list-style: none;
-  margin: 2px 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  gap: 9px;
+  gap: 8px;
 }
-.alur li {
+.d-alur li {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
-  color: #9a9a94;
+  color: var(--redup);
 }
-.alur li::before {
+.d-alur li::before {
   content: "";
   width: 20px;
   height: 20px;
-  background: #e4e4e0;
+  border-radius: 50%;
+  background: var(--garis);
   flex: none;
   transition: 0.3s;
 }
-.alur li.on {
-  color: var(--aksen);
+.d-alur li.on {
+  color: var(--teks);
 }
-.alur li.on::before {
+.d-alur li.on::before {
   background: var(--ok);
 }
-.geser-label {
+.d-geser {
   display: grid;
   gap: 4px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
 }
-.geser {
+.d-geser input {
   width: 100%;
   accent-color: var(--utama);
 }
-.slip {
+.d-slip {
   display: grid;
-  gap: 7px;
-  font-size: 13px;
+  gap: 6px;
+  font-size: 14px;
 }
-.slip div {
+.d-slip div {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
-.slip span {
-  color: var(--abu);
+.d-slip span {
+  color: var(--redup);
 }
-.slip .total {
-  background: var(--aksen);
-  color: #fff;
-  padding: 12px 14px;
+.d-slip .total {
+  background: var(--teks);
+  color: var(--bg);
+  padding: 11px 14px;
+  border-radius: 12px;
   margin-top: 3px;
   align-items: center;
 }
-.slip .total span {
-  color: #cfcfca;
+.d-slip .total span {
+  color: inherit;
+  opacity: 0.75;
 }
-.slip .total b {
+.d-slip .total b {
   font:
-    800 20px var(--font-judul),
+    800 19px var(--font-judul),
     sans-serif;
 }
-.prog {
+.d-prog {
   height: 8px;
-  background: #e4e4e0;
+  border-radius: 9px;
+  background: var(--garis);
+  overflow: hidden;
 }
-.prog i {
+.d-prog i {
   display: block;
   height: 100%;
   background: var(--utama);
   transition: width 0.3s;
 }
-.daftar-cek {
+.d-cek {
   display: grid;
   gap: 6px;
 }
-.cek {
+.d-cek button {
   display: flex;
   align-items: center;
   gap: 10px;
   border: 0;
-  background: var(--muda);
+  background: var(--kartu);
+  color: var(--teks);
   padding: 10px 12px;
+  border-radius: 12px;
   font:
-    600 14px var(--font-body),
+    600 14.5px var(--font-body),
     sans-serif;
-  color: var(--aksen);
   cursor: pointer;
   text-align: left;
 }
-.cek i {
+.d-cek i {
   width: 18px;
   height: 18px;
-  border: 2px solid var(--aksen);
+  border-radius: 5px;
+  border: 2px solid var(--teks);
   flex: none;
-  background: #fff;
 }
-.cek.on i {
+.d-cek .on i {
   background: var(--ok);
   border-color: var(--ok);
-  box-shadow: inset 0 0 0 3px #fff;
+  box-shadow: inset 0 0 0 3px var(--kartu);
 }
-.cek:disabled {
+.d-cek button:disabled {
   cursor: default;
 }
-.daftar-dok {
+.d-dok {
   display: grid;
   gap: 6px;
 }
-.dok {
+.d-dok > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  background: var(--muda);
+  background: var(--kartu);
   padding: 9px 12px;
-  font-size: 13.5px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-size: 14px;
   line-height: 1.3;
   transition: opacity 0.2s;
 }
-.dok small {
+.d-dok b {
   display: block;
-  color: var(--abu);
-  font-weight: 500;
+  font-weight: 700;
 }
-.dok.mati {
+.d-dok small {
+  color: var(--redup);
+}
+.d-dok .mati {
   opacity: 0.38;
 }

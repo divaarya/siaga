@@ -10,7 +10,7 @@ export default function WhatsApp({ wa }) {
       rel="noreferrer"
       aria-label="Chat WhatsApp"
     >
-      <MessageCircle size={22} /> <span>Chat WhatsApp</span>
+      <MessageCircle size={22} />
     </a>
   );
 }

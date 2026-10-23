@@ -1,13 +1,8 @@
 import { getSite } from "@/lib/getSite";
 import { buatLinkWa } from "@/lib/whatsapp";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Bukti from "./components/Bukti";
-import Fasilitas from "./components/Fasilitas";
-import Perbandingan from "./components/Perbandingan";
-import Modul from "./components/Modul";
-import CaraKerja from "./components/CaraKerja";
-import Testimoni from "./components/Testimoni";
+import Jam from "./components/Jam";
+import Fitur from "./components/Fitur";
 import Harga from "./components/Harga";
 import Faq from "./components/Faq";
 import Kontak from "./components/Kontak";
@@ -19,15 +14,10 @@ export default async function Home() {
   const wa = buatLinkWa(site.whatsappNomor, site.whatsappPesan);
   return (
     <>
-      <Navbar nama={site.nama} wa={wa} />
+      <Navbar nama={site.nama} wa={wa} cta={site.ctaTeks} />
       <main>
-        <Hero site={site} wa={wa} />
-        <Bukti />
-        <Fasilitas />
-        <Perbandingan />
-        <Modul />
-        <CaraKerja />
-        <Testimoni />
+        <Jam site={site} wa={wa} />
+        <Fitur />
         <Harga wa={wa} />
         <Faq wa={wa} />
         <Kontak site={site} wa={wa} />

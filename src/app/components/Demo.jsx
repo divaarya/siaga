@@ -1,14 +1,30 @@
 "use client";
 import { useEffect, useState } from "react";
-import Phone from "./Phone";
 import "./Demo.css";
 
 const rp = (n) => "Rp " + n.toLocaleString("id-ID");
 
+function Pil({ opsi, nilai, set, nonaktif }) {
+  return (
+    <div className="d-pil">
+      {opsi.map((o) => (
+        <button
+          key={o}
+          aria-pressed={nilai === o}
+          disabled={nonaktif}
+          onClick={() => set(o)}
+        >
+          {o}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function Saklar({ aktif, onKlik, children }) {
   return (
     <button
-      className="saklar"
+      className="d-saklar"
       role="switch"
       aria-checked={aktif}
       onClick={onKlik}
@@ -19,66 +35,26 @@ function Saklar({ aktif, onKlik, children }) {
   );
 }
 
-export function DemoHero() {
-  const [sudah, setSudah] = useState(false);
-  return (
-    <Phone judul="Jadwal Jaga">
-      <div className="d-sapa">
-        <small>Selamat pagi</small>
-        <b>Ns. Rina Maharani</b>
-      </div>
-      <div className="d-jam">
-        06:58 <span>WIB</span>
-      </div>
-      <div className="d-kartu">
-        <b>Jaga Pagi · IGD</b>
-        <small>07:00 – 14:00 WIB · Klinik Sehat Sentosa</small>
-        <span className="chip ok">8 m dari pintu IGD</span>
-      </div>
-      {sudah && (
-        <div className="d-hasil ok">
-          Absen jaga 06:58 WIB tercatat. Wajah cocok, lokasi asli.
-        </div>
-      )}
-      <button className="d-tombol merah" onClick={() => setSudah(!sudah)}>
-        {sudah ? "Ulangi simulasi" : "Absen Jaga"}
-      </button>
-    </Phone>
-  );
-}
-
-export function DemoAbsensi() {
+/* ---------- Absensi ---------- */
+export function DemoAbsensi({ malam }) {
   const unit = ["IGD", "Rawat Inap", "Poli"];
   const [u, setU] = useState(0);
   const [palsu, setPalsu] = useState(false);
   const [hasil, setHasil] = useState(null);
-  const ulang = () => {
-    setHasil(null);
-    setPalsu(false);
-  };
+  const waktu = malam ? "21:55" : "06:58";
   return (
-    <Phone judul="Absen Jaga">
-      <div className="d-sapa">
-        <small>Pilih unit jaga</small>
-        <b>Ns. Dimas Saputra</b>
+    <div className="d">
+      <Pil
+        opsi={unit}
+        nilai={unit[u]}
+        set={(x) => setU(unit.indexOf(x))}
+        nonaktif={!!hasil}
+      />
+      <div className="d-radar" aria-hidden="true">
+        <span className="d-unit">{unit[u]}</span>
+        <i className={palsu ? "d-pin jauh" : "d-pin"} />
       </div>
-      <div className="pilih">
-        {unit.map((x, i) => (
-          <button
-            key={x}
-            aria-pressed={u === i}
-            disabled={!!hasil}
-            onClick={() => setU(i)}
-          >
-            {x}
-          </button>
-        ))}
-      </div>
-      <div className="radar" aria-hidden="true">
-        <span className="sekolah">{unit[u]}</span>
-        <i className={palsu ? "pin jauh" : "pin"} />
-      </div>
-      <span className={palsu ? "chip bad" : "chip ok"}>
+      <span className={palsu ? "d-chip bad" : "d-chip ok"}>
         {palsu ? "41 km dari fasilitas" : "8 m dari unit · radius 50 m"}
       </span>
       <Saklar
@@ -92,7 +68,7 @@ export function DemoAbsensi() {
       </Saklar>
       {hasil === "ok" && (
         <div className="d-hasil ok">
-          Absen jaga {unit[u]} 06:58 WIB tercatat. Wajah cocok, lokasi asli.
+          Absen jaga {unit[u]} {waktu} WIB tercatat. Wajah cocok, lokasi asli.
         </div>
       )}
       {hasil === "tolak" && (
@@ -102,21 +78,28 @@ export function DemoAbsensi() {
         </div>
       )}
       {hasil ? (
-        <button className="d-tombol" onClick={ulang}>
+        <button
+          className="d-tombol gelap"
+          onClick={() => {
+            setHasil(null);
+            setPalsu(false);
+          }}
+        >
           Ulangi simulasi
         </button>
       ) : (
         <button
-          className="d-tombol merah"
+          className="d-tombol"
           onClick={() => setHasil(palsu ? "tolak" : "ok")}
         >
-          Absen Jaga
+          Absen jaga {waktu}
         </button>
       )}
-    </Phone>
+    </div>
   );
 }
 
+/* ---------- Perizinan ---------- */
 export function DemoPerizinan() {
   const rekan = ["Ns. Dimas", "Bd. Sari", "Ns. Budi"];
   const [r, setR] = useState(0);
@@ -133,24 +116,15 @@ export function DemoPerizinan() {
     "Kepala ruangan menyetujui",
   ];
   return (
-    <Phone judul="Tukar Jaga">
-      <div className="d-sapa">
-        <small>Rabu, 14 Okt</small>
-        <b>Kamu Malam ⇄ {rekan[r]} Pagi</b>
-      </div>
-      <div className="pilih">
-        {rekan.map((x, i) => (
-          <button
-            key={x}
-            aria-pressed={r === i}
-            disabled={step > 0}
-            onClick={() => setR(i)}
-          >
-            {x}
-          </button>
-        ))}
-      </div>
-      <ul className="alur">
+    <div className="d">
+      <p className="d-judul">Rabu: kamu Malam ⇄ {rekan[r]} Pagi</p>
+      <Pil
+        opsi={rekan}
+        nilai={rekan[r]}
+        set={(x) => setR(rekan.indexOf(x))}
+        nonaktif={step > 0}
+      />
+      <ul className="d-alur">
         {alur.map((x, i) => (
           <li key={x} className={step > i ? "on" : ""}>
             {x}
@@ -159,13 +133,12 @@ export function DemoPerizinan() {
       </ul>
       {step === 3 && (
         <div className="d-hasil ok">
-          Disetujui. Rabu: kamu Pagi, {rekan[r]} Malam.
-          <br />
-          Terkirim ke: Absensi · Gaji
+          Disetujui. Rabu: kamu Pagi, {rekan[r]} Malam. Terkirim ke Absensi dan
+          Gaji.
         </div>
       )}
       {step === 0 && (
-        <button className="d-tombol merah" onClick={() => setStep(1)}>
+        <button className="d-tombol" onClick={() => setStep(1)}>
           Ajukan tukar jaga
         </button>
       )}
@@ -175,14 +148,15 @@ export function DemoPerizinan() {
         </button>
       )}
       {step === 3 && (
-        <button className="d-tombol" onClick={() => setStep(0)}>
+        <button className="d-tombol gelap" onClick={() => setStep(0)}>
           Ulangi simulasi
         </button>
       )}
-    </Phone>
+    </div>
   );
 }
 
+/* ---------- Gaji ---------- */
 export function DemoGaji() {
   const [shift, setShift] = useState(22);
   const [malam, setMalam] = useState(6);
@@ -194,15 +168,10 @@ export function DemoGaji() {
   const bruto = upah + premi + lem;
   const bpjs = Math.round(bruto * 0.03);
   return (
-    <Phone judul="Slip Gaji">
-      <div className="d-sapa">
-        <small>Periode Oktober 2026</small>
-        <b>Ns. Rina Maharani</b>
-      </div>
-      <label className="geser-label">
+    <div className="d">
+      <label className="d-geser">
         Shift bulan ini: <b>{shift}</b>
         <input
-          className="geser"
           type="range"
           min="16"
           max="26"
@@ -210,10 +179,9 @@ export function DemoGaji() {
           onChange={(e) => setShift(+e.target.value)}
         />
       </label>
-      <label className="geser-label">
+      <label className="d-geser">
         Shift malam: <b>{m}</b>
         <input
-          className="geser"
           type="range"
           min="0"
           max="10"
@@ -221,10 +189,9 @@ export function DemoGaji() {
           onChange={(e) => setMalam(+e.target.value)}
         />
       </label>
-      <label className="geser-label">
+      <label className="d-geser">
         Lembur: <b>{lembur} jam</b>
         <input
-          className="geser"
           type="range"
           min="0"
           max="20"
@@ -232,7 +199,7 @@ export function DemoGaji() {
           onChange={(e) => setLembur(+e.target.value)}
         />
       </label>
-      <div className="slip">
+      <div className="d-slip">
         <div>
           <span>Upah ({shift} × Rp 220.000)</span>
           <b>{rp(upah)}</b>
@@ -254,13 +221,12 @@ export function DemoGaji() {
           <b>{rp(bruto - bpjs)}</b>
         </div>
       </div>
-      <small className="catatan">
-        Simulasi ilustratif, bukan nasihat pajak.
-      </small>
-    </Phone>
+      <p className="d-catatan">Simulasi ilustratif, bukan nasihat pajak.</p>
+    </div>
   );
 }
 
+/* ---------- Exam (checklist APD) ---------- */
 const apd = [
   "Cuci tangan 6 langkah selesai",
   "Masker medis terpasang benar",
@@ -274,29 +240,22 @@ export function DemoExam() {
   const [cek, setCek] = useState(apd.map(() => false));
   const [mulai, setMulai] = useState(false);
   const n = cek.filter(Boolean).length;
-  const ulang = () => {
-    setCek(apd.map(() => false));
-    setMulai(false);
-  };
   return (
-    <Phone judul="Checklist APD">
-      <div className="d-sapa">
-        <small>Wajib sebelum jaga · 06:50 WIB</small>
-        <b>
-          {n} dari {apd.length} selesai
-        </b>
-      </div>
-      <div className="prog">
+    <div className="d">
+      <p className="d-judul">
+        {n} dari {apd.length} selesai
+      </p>
+      <div className="d-prog">
         <i style={{ width: `${(n / apd.length) * 100}%` }} />
       </div>
-      <div className="daftar-cek">
+      <div className="d-cek">
         {apd.map((x, i) => (
           <button
             key={x}
             role="checkbox"
             aria-checked={cek[i]}
             disabled={mulai}
-            className={cek[i] ? "cek on" : "cek"}
+            className={cek[i] ? "on" : ""}
             onClick={() => setCek(cek.map((v, k) => (k === i ? !v : v)))}
           >
             <i />
@@ -310,22 +269,29 @@ export function DemoExam() {
         </div>
       )}
       {mulai ? (
-        <button className="d-tombol" onClick={ulang}>
+        <button
+          className="d-tombol gelap"
+          onClick={() => {
+            setCek(apd.map(() => false));
+            setMulai(false);
+          }}
+        >
           Ulangi simulasi
         </button>
       ) : (
         <button
-          className="d-tombol merah"
+          className="d-tombol"
           disabled={n < apd.length}
           onClick={() => setMulai(true)}
         >
-          Mulai Jaga
+          Mulai jaga
         </button>
       )}
-    </Phone>
+    </div>
   );
 }
 
+/* ---------- Library ---------- */
 const dok = [
   ["SPO Cuci Tangan 6 Langkah", "SPO", true],
   ["SPO Penanganan Pasien IGD", "SPO", true],
@@ -337,37 +303,29 @@ const dok = [
 
 export function DemoLibrary() {
   const tab = ["Semua", "SPO", "Izin praktik"];
-  const [t, setT] = useState(0);
+  const [t, setT] = useState("Semua");
   const [pesawat, setPesawat] = useState(false);
-  const daftar = dok.filter(([, k]) => t === 0 || k === tab[t]);
+  const daftar = dok.filter(([, k]) => t === "Semua" || k === t);
   return (
-    <Phone judul="Library SPO">
-      <div className="pilih">
-        {tab.map((x, i) => (
-          <button key={x} aria-pressed={t === i} onClick={() => setT(i)}>
-            {x}
-          </button>
-        ))}
-      </div>
+    <div className="d">
+      <Pil opsi={tab} nilai={t} set={setT} />
       <Saklar aktif={pesawat} onKlik={() => setPesawat(!pesawat)}>
         Mode pesawat
       </Saklar>
-      <div className="daftar-dok">
+      <div className="d-dok">
         {daftar.map(([n, k, offline]) => (
-          <div key={n} className={pesawat && !offline ? "dok mati" : "dok"}>
-            <div>
-              {n}
+          <div key={n} className={pesawat && !offline ? "mati" : ""}>
+            <span>
+              <b>{n}</b>
               <small>{k}</small>
-            </div>
-            <span className={offline ? "chip ok" : "chip"}>
-              {offline ? "Offline siap" : "Perlu internet"}
             </span>
+            <em className={offline ? "d-chip ok" : "d-chip"}>
+              {offline ? "Offline siap" : "Perlu internet"}
+            </em>
           </div>
         ))}
       </div>
-      <small className="catatan">
-        4 dari 6 dokumen tersimpan lokal di ponsel.
-      </small>
-    </Phone>
+      <p className="d-catatan">4 dari 6 dokumen tersimpan lokal di ponsel.</p>
+    </div>
   );
 }

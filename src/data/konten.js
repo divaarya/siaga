@@ -1,280 +1,125 @@
-export const bukti = [
-  ["60+", "klinik dan rumah sakit"],
-  ["4.200+", "perawat dan tenaga medis"],
-  ["0", "titip absen lolos tanpa tanda"],
-  ["2 hari", "pasang untuk satu fasilitas"],
+// Kejadian di jam jaga. t = jam, mod = fitur yang ditampilkan.
+export const kejadian = [
+  { t: "06:50", mod: "exam", judul: "Checklist APD sebelum jaga" },
+  { t: "06:58", mod: "absensi", judul: "Absen jaga pagi" },
+  { t: "10:15", mod: "perizinan", judul: "Tukar jaga disetujui" },
+  { t: "13:00", mod: "library", judul: "SPO dibuka tanpa sinyal" },
+  { t: "14:05", mod: "gaji", judul: "Shift selesai, lembur masuk slip" },
+  { t: "21:55", mod: "absensi", judul: "Absen jaga malam", malam: true },
 ];
 
-export const logo = [
-  "Klinik Sehat Sentosa",
-  "RS Medika Nusantara",
-  "Klinik Pratama Bunda",
-  "Lab Cendekia Medika",
-  "Apotek Wijaya Farma",
-];
-
-export const fasilitas = [
-  {
-    nama: "Klinik Pratama",
-    teks: "Dokter, perawat, dan admin dengan jam praktik berbeda absen dari satu aplikasi.",
-    chip: "Jam praktik",
-  },
-  {
-    nama: "Rumah Sakit",
-    teks: "Jaga pagi, siang, dan malam di IGD dan rawat inap, dengan tukar jaga yang disetujui kepala ruangan.",
-    chip: "3 shift",
-  },
-  {
-    nama: "Laboratorium",
-    teks: "Analis dan petugas sampel absen di titik layanan, uji kompetensi berkala tercatat.",
-    chip: "Per titik layanan",
-  },
-  {
-    nama: "Apotek dan Praktik Bersama",
-    teks: "Apoteker dan asisten dengan jadwal bergantian dibayar per shift secara jelas.",
-    chip: "Upah per shift",
-  },
-];
-
-export const modul = [
-  {
-    id: "absensi",
-    no: "01",
+export const modulInfo = {
+  absensi: {
     nama: "Absensi",
-    warna: "w1",
-    judul: "Absen jaga yang tidak bisa dititipkan.",
-    desk: "Selfie memastikan orangnya, GPS memastikan unitnya. Jadwal jaga pagi, siang, dan malam masuk otomatis ke rekap.",
+    desk: "Selfie memastikan orangnya, GPS memastikan unitnya. Jadwal pagi, siang, dan malam masuk otomatis ke rekap.",
     fitur: [
-      [
-        "Selfie biometrik",
-        "Wajah dicocokkan dengan foto referensi tenaga kesehatan.",
-      ],
-      [
-        "Geofence per unit",
-        "Absen hanya sah di dalam radius fasilitas atau unit layanan.",
-      ],
-      [
-        "Deteksi lokasi palsu",
-        "Aplikasi lokasi palsu dan lompatan posisi ditandai ke atasan.",
-      ],
-      [
-        "Jadwal jaga rolling",
-        "Pola pagi, siang, malam tersusun dan terlihat di ponsel.",
-      ],
-      [
-        "Rekap per unit",
-        "IGD, rawat inap, dan poli terpantau terpisah secara real-time.",
-      ],
-      [
-        "Jaga panggilan",
-        "Jaga on-call dicatat dari jam dipanggil sampai selesai.",
-      ],
+      "Selfie biometrik",
+      "Geofence per unit",
+      "Deteksi lokasi palsu",
+      "Jadwal jaga rolling",
+      "Rekap per unit",
+      "Jaga panggilan",
     ],
   },
-  {
-    id: "perizinan",
-    no: "02",
+  perizinan: {
     nama: "Perizinan",
-    warna: "w2",
-    judul: "Tukar jaga dan izin, selesai dari ponsel.",
     desk: "Ajukan tukar jaga dengan rekan, pantau persetujuan kepala ruangan, dan jadwal berubah dengan sendirinya.",
     fitur: [
-      [
-        "Tukar jaga antar rekan",
-        "Dua perawat bertukar jadwal tanpa kepala ruangan menyusun ulang.",
-      ],
-      [
-        "Izin sakit + foto surat",
-        "Surat dokter difoto dari ponsel dan langsung tercatat.",
-      ],
-      [
-        "Persetujuan berjenjang",
-        "Dari rekan, kepala ruangan, sampai manajer keperawatan.",
-      ],
-      [
-        "Pengganti jaga otomatis",
-        "Shift kosong ditawarkan ke tenaga yang tersedia.",
-      ],
-      ["Persetujuan lembur", "Jam mulai dan selesai lembur tercatat jelas."],
-      ["Saldo cuti", "Sisa cuti tahunan terlihat tanpa bertanya ke HRD."],
+      "Tukar jaga antar rekan",
+      "Izin sakit + foto surat",
+      "Persetujuan berjenjang",
+      "Pengganti jaga otomatis",
+      "Persetujuan lembur",
+      "Saldo cuti",
     ],
   },
-  {
-    id: "gaji",
-    no: "03",
+  gaji: {
     nama: "Gaji",
-    warna: "w3",
-    judul: "Gaji per shift, terhitung tanpa spreadsheet.",
     desk: "Jumlah jaga, tunjangan malam, dan lembur masuk slip langsung dari data absensi.",
     fitur: [
-      ["Upah per shift", "Dihitung dari jaga yang benar-benar dihadiri."],
-      [
-        "Tunjangan jaga malam",
-        "Premi malam dan hari libur terhitung per frekuensi.",
-      ],
-      ["Insentif unit", "Insentif IGD dan kamar operasi tercatat terpisah."],
-      ["Lembur berjenjang", "Kalkulasi lembur dari pengajuan yang disetujui."],
-      ["BPJS dan PPh 21", "Iuran dan pajak dihitung otomatis tiap periode."],
-      ["Slip gaji digital", "Tenaga kesehatan melihat rincian dari ponsel."],
+      "Upah per shift",
+      "Tunjangan jaga malam",
+      "Insentif unit",
+      "Lembur berjenjang",
+      "BPJS dan PPh 21",
+      "Slip gaji digital",
     ],
   },
-  {
-    id: "exam",
-    no: "04",
+  exam: {
     nama: "Exam",
-    warna: "w4",
-    judul: "Siap sebelum jaga: checklist APD dan uji kompetensi.",
     desk: "Checklist kesiapan selesai sebelum jaga dimulai. Uji kompetensi berkala tercatat di profil.",
     fitur: [
-      [
-        "Checklist APD dan higienitas",
-        "Cuci tangan, APD, dan alat dasar diperiksa sebelum jaga.",
-      ],
-      [
-        "Kuis SPO harian",
-        "Kuis singkat dengan timer untuk pemahaman prosedur.",
-      ],
-      [
-        "Uji kompetensi berkala",
-        "Evaluasi keahlian perawat, analis, dan apoteker.",
-      ],
-      ["Tes rekrutmen", "Calon tenaga kesehatan mengerjakan tes dari ponsel."],
-      ["Pelatihan wajib", "Progres pelatihan wajib terpantau per orang."],
-      ["Rekap nilai", "Nilai tersimpan di profil dan mudah diaudit."],
+      "Checklist APD dan higienitas",
+      "Kuis SPO harian",
+      "Uji kompetensi berkala",
+      "Tes rekrutmen",
+      "Pelatihan wajib",
+      "Rekap nilai",
     ],
   },
-  {
-    id: "library",
-    no: "05",
+  library: {
     nama: "Library",
-    warna: "w5",
-    judul: "SPO di genggaman, terbaca tanpa sinyal.",
     desk: "SPO klinis, formularium, dan arsip izin praktik tersimpan di ponsel dan bisa dibuka offline.",
     fitur: [
-      ["SPO klinis offline", "Prosedur tetap terbaca di ruang tanpa sinyal."],
-      ["Formularium obat", "Daftar obat fasilitas mudah dicari."],
-      ["Arsip STR dan SIP", "Masa berlaku diingatkan sebelum habis."],
-      ["Surat edaran", "Kebijakan dan edaran fasilitas tersimpan aman."],
-      [
-        "E-learning pelatihan",
-        "Materi pelatihan dan progres belajar tenaga medis.",
-      ],
-      ["Pencarian cepat", "Temukan prosedur dalam hitungan detik."],
+      "SPO klinis offline",
+      "Formularium obat",
+      "Arsip STR dan SIP",
+      "Surat edaran",
+      "E-learning pelatihan",
+      "Pencarian cepat",
     ],
   },
-];
+};
 
-export const chatLama = [
-  [
-    "Ns. Dimas (IGD)",
-    "Besok siapa yang jaga malam? Jadwal minggu lalu mana ya?",
-    "21:14",
-  ],
-  [
-    "Ns. Rina (Rawat Inap)",
-    "Aku tukar jaga sama Dimas ya, kepala ruangan belum balas.",
-    "21:20",
-  ],
-  [
-    "Bidan Sari",
-    "Surat dokter menyusul besok pagi ya, masih di klinik.",
-    "21:28",
-  ],
-  ["Kepala Ruangan", "Tolong rekap lembur kemarin lagi, manual ya.", "21:35"],
-];
+export const unit = ["IGD", "Rawat Inap", "Poli", "Lab"];
 
-export const bandingan = [
-  [
-    "Absen tanda tangan di buku, bisa dititipkan",
-    "Selfie dan GPS unit, tidak bisa dititipkan",
-  ],
-  [
-    "Tukar jaga lewat chat dan sering lupa dicatat",
-    "Tukar jaga disetujui dan jadwal berubah otomatis",
-  ],
-  [
-    "Lembur dan insentif dihitung manual di Excel",
-    "Jam jaga langsung masuk ke slip gaji",
-  ],
-];
+export const roster = {
+  Pagi: {
+    IGD: ["Ns. Rina", "Dr. Aditya", "Ns. Dimas"],
+    "Rawat Inap": ["Ns. Sari", "Ns. Budi", "Bd. Wulan"],
+    Poli: ["Dr. Maya", "Ns. Tika"],
+    Lab: ["Ana. Hendra"],
+  },
+  Siang: {
+    IGD: ["Ns. Fajar", "Dr. Lestari"],
+    "Rawat Inap": ["Ns. Agus", "Ns. Nia"],
+    Poli: ["Dr. Bayu"],
+    Lab: ["Ana. Putri"],
+  },
+  Malam: {
+    IGD: ["Ns. Yusuf", "Dr. Kevin"],
+    "Rawat Inap": ["Ns. Dewi", "Ns. Anton"],
+    Poli: [],
+    Lab: ["Ana. Joko"],
+  },
+};
 
-export const langkah = [
-  {
-    judul: "Impor tenaga dan unit",
-    teks: "Unggah daftar tenaga kesehatan dari Excel, lalu tandai titik GPS dan radius tiap unit.",
-    chip: ["Excel", "CSV", "Titik GPS"],
-  },
-  {
-    judul: "Susun pola jaga dan tarif",
-    teks: "Pilih pola pagi, siang, malam, atur jeda istirahat, upah per shift, dan premi malam.",
-    chip: ["3 shift", "Upah shift", "Premi malam"],
-  },
-  {
-    judul: "Tenaga medis absen dari ponsel",
-    teks: "Rekam foto referensi sekali, lalu langsung absen dengan selfie dan GPS di unit kerja.",
-    chip: ["Selfie", "GPS", "Siap pakai"],
-  },
-];
-
-export const testimoni = [
-  {
-    nama: "Rina Maharani",
-    jabatan: "Kepala Keperawatan, Klinik Sehat Sentosa",
-    teks: "Titip absen berhenti sejak selfie wajib. Rekap kehadiran tiga unit selesai tanpa saya mengejar laporan.",
-  },
-  {
-    nama: "Hendra Kusuma",
-    jabatan: "Manajer HRD, RS Medika Nusantara",
-    teks: "Tukar jaga dulu lewat chat dan sering lupa dicatat. Sekarang tercatat, disetujui, dan masuk jadwal hari itu juga.",
-  },
-  {
-    nama: "Made Wijaya",
-    jabatan: "Apoteker Penanggung Jawab, Apotek Wijaya Farma",
-    teks: "Upah per shift dan premi malam sudah ada di slip. Asisten apoteker berhenti menanyakan hitungan di akhir bulan.",
-  },
-];
-
-export const harga = [
+export const paket = [
   {
     nama: "Klinik",
-    batas: "Hingga 40 tenaga aktif",
+    batas: "Hingga 40 tenaga",
     harga: "Rp 12.000",
     satuan: "/ orang / bulan",
-    teks: "Untuk klinik pratama, lab, dan apotek tunggal.",
-    fitur: [
-      "Modul Absensi (selfie dan geofence)",
-      "Modul Perizinan dan tukar jaga",
-      "Modul Library dan SPO offline",
-      "Dukungan WhatsApp",
-    ],
   },
   {
     nama: "Fasilitas",
-    batas: "40 sampai 250 tenaga aktif",
+    batas: "40 sampai 250 tenaga",
     harga: "Rp 9.500",
     satuan: "/ orang / bulan",
-    teks: "Untuk rumah sakit dan klinik multi-unit.",
     populer: true,
-    fitur: [
-      "Semua fitur Klinik",
-      "Modul Gaji dan slip digital",
-      "Modul Exam dan checklist APD",
-      "Persetujuan berjenjang",
-    ],
   },
-  {
-    nama: "Jaringan",
-    batas: "250+ tenaga aktif",
-    harga: "Hubungi kami",
-    satuan: "",
-    teks: "Untuk grup rumah sakit dan banyak cabang.",
-    fitur: [
-      "Semua fitur Fasilitas",
-      "Banyak cabang dan entitas",
-      "Ekspor laporan bank dan payroll",
-      "Pendamping khusus",
-    ],
-  },
+  { nama: "Jaringan", batas: "250+ tenaga", harga: "Hubungi kami", satuan: "" },
+];
+
+export const barisHarga = [
+  ["Absensi selfie dan geofence", [true, true, true]],
+  ["Perizinan dan tukar jaga", [true, true, true]],
+  ["Library dan SPO offline", [true, true, true]],
+  ["Gaji per shift dan slip digital", [false, true, true]],
+  ["Exam dan checklist APD", [false, true, true]],
+  ["Persetujuan berjenjang", [false, true, true]],
+  ["Banyak cabang dalam satu akun", [false, false, true]],
+  ["Ekspor payroll untuk bank", [false, false, true]],
 ];
 
 export const faq = [
