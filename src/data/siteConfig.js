@@ -18,6 +18,6 @@ export const siteConfig = {
       "Siaga - HRIS Klinik dan Rumah Sakit: Absensi Jaga, Gaji, Exam, Library, Perizinan",
     metaDescription:
       "Absensi jaga dengan selfie dan GPS, tukar jaga, gaji per shift, checklist APD, dan SPO offline dalam satu aplikasi untuk klinik dan rumah sakit.",
-    ogImage: "",
+    ogImage: "/siaga.png",
   },
 };
